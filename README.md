@@ -16,7 +16,7 @@ With Uniforge, creators can finally become the deployers of their brand new smar
 
 -   **Storage service**: The price for the storage service is a periodic payment on a monthly or yearly basis to cover the expenses of keeping the files pinned on IPFS. Even though we offer this service, we always encourage users to pin their own collections on IPFS to increase decentralization.
 
-Besides the above-mentioned services, Uniforge does not collect any other financial resources from your actions on the platform, and you keep 100% of your NFT sale profits. Additionally, you appear on-chain as the deployer of the NFT collection's smart contract, and this contract is entirely owned by you (or the address you choose to become the owner). You are able to interact with your smart contract freely through the Uniforge app or externally with a different frontend.
+Besides the above mentioned services, Uniforge does not collect any other financial resources from your actions on the platform, and you keep 100% of your NFT sale profits. Additionally, you appear on-chain as the deployer of the NFT collection's smart contract, and this contract is entirely owned by you (or the address you choose to become the owner). You are able to interact with your smart contract freely through the Uniforge app or externally with a different frontend.
 
 ## About
 At Dapponics, we believe in the power of decentralization. We also believe in the importance of protecting users' privacy and security and preserving their rights to fully own their assets. That's why we've designed our platform to be fully decentralized, with no central authority controlling the platform.
