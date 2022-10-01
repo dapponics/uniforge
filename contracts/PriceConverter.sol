@@ -5,7 +5,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 /**
  * @title Price Converter
- * @author d-carranza
+ * @author Dapponics
  * @notice This library provides utility functions for converting ETH amounts to USD amounts using Chainlink Data Feeds as the price oracle.
  */
 library PriceConverter {
