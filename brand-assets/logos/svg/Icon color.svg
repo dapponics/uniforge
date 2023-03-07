@@ -1,0 +1,30 @@
+<svg width="3000" height="3000" viewBox="0 0 3000 3000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_124_154" fill="white">
+<path d="M1360.21 2162H2158.71L1360.21 1798V2162Z"/>
+</mask>
+<path d="M1360.21 2162H2158.71L1360.21 1798V2162Z" stroke="#D995D1" stroke-width="140" mask="url(#path-1-inside-1_124_154)"/>
+<mask id="path-2-inside-2_124_154" fill="white">
+<path d="M1360.21 2162H562.207L1360.21 1798V2162Z"/>
+</mask>
+<path d="M1360.21 2162H562.207L1360.21 1798V2162Z" stroke="#A6E276" stroke-width="140" mask="url(#path-2-inside-2_124_154)"/>
+<mask id="path-3-inside-3_124_154" fill="white">
+<path d="M1360.21 1798L2953.21 838H1797.21L1360.21 1798Z"/>
+</mask>
+<path d="M1360.21 1798L2953.21 838H1797.21L1360.21 1798Z" stroke="#537AE0" stroke-width="140" mask="url(#path-3-inside-3_124_154)"/>
+<mask id="path-4-inside-4_124_154" fill="white">
+<path d="M1797.21 838H793.207L1360.21 1798L1797.21 838Z"/>
+</mask>
+<path d="M1797.21 838H793.207L1360.21 1798L1797.21 838Z" stroke="#5A9DED" stroke-width="140" mask="url(#path-4-inside-4_124_154)"/>
+<mask id="path-5-inside-5_124_154" fill="white">
+<path d="M1360.21 1798L562.207 2162L1073.71 1313L1360.21 1798Z"/>
+</mask>
+<path d="M1360.21 1798L562.207 2162L1073.71 1313L1360.21 1798Z" stroke="#FFE94D" stroke-width="140" mask="url(#path-5-inside-5_124_154)"/>
+<mask id="path-6-inside-6_124_154" fill="white">
+<path d="M2158.71 2162L1360.21 1798L1784.71 1542L2158.71 2162Z"/>
+</mask>
+<path d="M2158.71 2162L1360.21 1798L1784.71 1542L2158.71 2162Z" stroke="#FF9C92" stroke-width="140" mask="url(#path-6-inside-6_124_154)"/>
+<mask id="path-7-inside-7_124_154" fill="white">
+<path d="M46 994H704.207H704.266L1178.71 1798L46 994Z"/>
+</mask>
+<path d="M46 994V924H-173.555L5.4829 1051.08L46 994ZM704.266 994L764.552 958.425L744.238 924H704.266V994ZM1178.71 1798L1138.19 1855.08L1238.99 1762.43L1178.71 1798ZM704.207 924H46V1064H704.207V924ZM704.207 1064H704.266V924H704.207V1064ZM643.979 1029.57L1118.42 1833.57L1238.99 1762.43L764.552 958.425L643.979 1029.57ZM1219.22 1740.92L86.5171 936.918L5.4829 1051.08L1138.19 1855.08L1219.22 1740.92Z" fill="#53D3E0" mask="url(#path-7-inside-7_124_154)"/>
+</svg>
