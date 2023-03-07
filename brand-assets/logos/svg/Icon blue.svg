@@ -1,19 +1,19 @@
 <svg width="3000" height="3000" viewBox="0 0 3000 3000" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_117_961)">
-<path d="M1360.21 2162H2158.71L1360.21 1798V2162Z" fill="#454A75" stroke="#454A75" stroke-width="2"/>
-<path d="M1360.21 2162H562.207L1360.21 1798V2162Z" fill="#62688F" stroke="#62688F" stroke-width="2"/>
-<path d="M1360.21 1798L2158.71 2162L1360.21 838V1798Z" fill="#62688F" stroke="#62688F" stroke-width="2"/>
-<path d="M1360.21 838V1798L562.207 2162L1360.21 838Z" fill="#8A92B2" stroke="#8A92B2" stroke-width="2"/>
+<path d="M1359.5 838.5L562 2162H2158L1359.5 838.5Z" fill="#62688F"/>
+<path d="M1359.5 1798L2952.5 838H1359.5V1798Z" fill="#62688F"/>
+<path d="M1360.21 2162H2158.71L1360.21 1798V2162Z" fill="#454A75"/>
+<path d="M1360.21 2162H562.207L1360.21 1798V2162Z" fill="#62688F"/>
+<path d="M1360.21 1798L2158.71 2162L1360.21 838V1798Z" fill="#62688F"/>
+<path d="M1360.21 838V1798L562.207 2162L1360.21 838Z" fill="#8A92B2"/>
 <g filter="url(#filter0_d_117_961)">
 <path d="M1360.21 1798L2953.21 838H1797.21L1360.21 1798Z" fill="#62688F"/>
-<path d="M1360.21 1798L2953.21 838H1797.21L1360.21 1798Z" stroke="#62688F" stroke-width="2"/>
 </g>
-<path d="M1797.21 838H793.207L1360.21 1798L1797.21 838Z" fill="#454A75" stroke="#454A75" stroke-width="2"/>
+<path d="M1797.21 838H793.207L1360.21 1798L1797.21 838Z" fill="#454A75"/>
 <path d="M46 994H704.207H704.266L1178.71 1798L46 994Z" fill="#62688F"/>
-<path d="M704.207 994H46M46 994H704.266L1178.71 1798L46 994Z" stroke="#62688F" stroke-width="2"/>
 </g>
 <defs>
-<filter id="filter0_d_117_961" x="1307.96" y="797" width="1698.84" height="1063.52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_117_961" x="1310.21" y="798" width="1693" height="1060" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="10"/>
