@@ -5,7 +5,6 @@ Uniforge is a decentralized platform developed by Dapponics, that allows artists
 With Uniforge, users can create, manage, showcase, and mint their unique digital assets without any intermediaries, making it fully decentralized.
 
 ## Features
-
 -   **Collection Deployment**: Easily deploy your own NFT collection and customize its properties, such as name, symbol, and total supply.
 -   **Collection Manager**: Safely manage your deployed NFT collection, editing properties such as mint fee, modifying the ownership or withdrawing the funds.
 -   **Minting**: Allow others to mint their own NFTs from your collection, which they can use to represent their unique digital identity or participation in your project.
@@ -17,11 +16,8 @@ With Uniforge, users can create, manage, showcase, and mint their unique digital
 
 -   **Storage**: The price for the storage service is a periodic payment on a monthly or yearly basis to cover the expenses of keeping the files pinned on IPFS. Besides offering this service we always encourage users to pin their own collections on IPFS to increase descentralization.
 
-
-
-
+## About
 At Dapponics, we believe in the power of decentralization and importance of protecting users privacy and security and their rights to fully own the assets. That's why we've designed our platform to be fully decentralized, with no central authority controlling the platform.
 
 ## Contact Us
-
 If you have any questions, feedback, or suggestions, please do not hesitate to [contact us](https://dapponics.io/). We would love to hear from you!
