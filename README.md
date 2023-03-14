@@ -13,7 +13,7 @@ With Uniforge, users can create, manage, showcase, and mint their unique digital
 -   **Fully Decentralized**: Uniforge is built on blockchain technology, meaning that it is decentralized, secure, and transparent.
 
 ## Pricing
--   **Deployment**: The price for deployment consist on a fixed price plus the gas fees from the blockchain (our contracts are gas optimized but deploying a NFT collection is a gas intensive operation in the blockchain). The fixed price value is adjusted to meet market conditions.
+-   **Deployment**: The price for deployment consist on a fixed price plus the gas fees (our contracts are gas optimized but bear in mind that deploying a NFT collection is a gas intensive operation in the blockchain). The fixed price value is adjusted to meet market conditions.
 
 -   **Storage**: The price for the storage service is a periodic payment on a monthly or yearly basis to cover the expenses of keeping the files pinned on IPFS. Besides offering this service we always encourage users to pin their own collections on IPFS to increase descentralization.
 
