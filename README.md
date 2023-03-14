@@ -18,6 +18,8 @@ With Uniforge, users can create, manage, showcase, and mint their unique digital
 -   **Storage**: The price for the storage service is a periodic payment on a monthly or yearly basis to cover the expenses of keeping the files pinned on IPFS. Besides offering this service we always encourage users to pin their own collections on IPFS to increase descentralization.
 
 
+
+
 At Dapponics, we believe in the power of decentralization and importance of protecting users privacy and security and their rights to fully own the assets. That's why we've designed our platform to be fully decentralized, with no central authority controlling the platform.
 
 ## Contact Us
