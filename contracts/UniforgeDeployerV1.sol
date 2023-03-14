@@ -14,14 +14,15 @@ error UniforgeDeployerV1__NeedMoreETHSent();
 error UniforgeDeployerV1__TransferFailed();
 
 /**
- * @title Uniforge Deployer V0
+ * @title Uniforge Deployer V1
  * @author dapponics.io
  * @notice This contract enables users to deploy Uniforge NFT collections.
  * For more information about Uniforge, visit uniforge.io.
  */
 contract UniforgeDeployerV1 is Ownable {
-    address payable[] private s_deployedCollections;
-    uint256 private s_deployFee;
+    uint256 private deployFee;
+    uint256 private deployedCollectionsCounter;
+    mapping(uint256 => address) deployedCollections;
 
     event NewCollectionCreated(address indexed newUniforgeCollection);
 
@@ -53,7 +54,7 @@ contract UniforgeDeployerV1 is Ownable {
         uint256 _maxSupply,
         uint256 _startSale
     ) public payable {
-        if (msg.value < s_deployFee) {
+        if (msg.value < deployFee) {
             revert UniforgeDeployerV1__NeedMoreETHSent();
         }
         address newUniforgeCollection = address(
@@ -68,7 +69,11 @@ contract UniforgeDeployerV1 is Ownable {
                 _startSale
             )
         );
-        s_deployedCollections.push(payable(newUniforgeCollection));
+
+        deployedCollectionsCounter += 1;
+        deployedCollections[deployedCollectionsCounter] = address(
+            newUniforgeCollection
+        );
         emit NewCollectionCreated(address(newUniforgeCollection));
     }
 
@@ -77,7 +82,7 @@ contract UniforgeDeployerV1 is Ownable {
      * @param _amount The new deployment fee amount.
      */
     function setDeployFee(uint256 _amount) public onlyOwner {
-        s_deployFee = _amount;
+        deployFee = _amount;
     }
 
     /**
@@ -95,7 +100,7 @@ contract UniforgeDeployerV1 is Ownable {
      * @dev Returns the number of Uniforge Collections deployed by this contract.
      */
     function getDeployments() public view returns (uint256) {
-        return s_deployedCollections.length;
+        return deployedCollectionsCounter;
     }
 
     /**
@@ -103,13 +108,13 @@ contract UniforgeDeployerV1 is Ownable {
      * @param index The index of the deployed collection.
      */
     function getDeployment(uint256 index) public view returns (address) {
-        return s_deployedCollections[index];
+        return deployedCollections[index];
     }
 
     /**
      * @dev Returns the deployment fee required to deploy a new Uniforge Collection.
      */
     function getDeployFee() public view returns (uint256) {
-        return s_deployFee;
+        return deployFee;
     }
 }

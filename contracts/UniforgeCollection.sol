@@ -21,18 +21,18 @@ error UniforgeCollection__NonexistentToken();
 /**
  * @title Uniforge Collection
  * @author dapponics.io
- * @notice A smart contract for a Non-Fungible Token (NFT) collection.
+ * @notice A smart contract for a Uniforge NFT collection.
  * For more info about Uniforge, visit uniforge.io.
  */
 contract UniforgeCollection is ERC721Enumerable, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
-    Counters.Counter private s_supply;
-    string private s_baseURI;
-    uint256 private s_startSale;
-    uint256 private s_maxMintAmount;
-    uint256 private immutable i_maxSupply;
-    uint256 private immutable i_mintFee;
+    Counters.Counter private supply;
+    string private baseURI;
+    uint256 private mintFee;
+    uint256 private maxMintAmount;
+    uint256 private maxSupply;
+    uint256 private startSale;
 
     /**
      * @dev Transfers ownership to the client right at deployment and declare all the variables.
@@ -56,38 +56,41 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
         uint256 _startSale
     ) ERC721(_name, _symbol) {
         transferOwnership(_owner);
-        s_baseURI = _baseURI;
-        i_mintFee = _mintFee;
-        s_maxMintAmount = _maxMintAmount;
-        i_maxSupply = _maxSupply;
-        s_startSale = _startSale;
+        baseURI = _baseURI;
+        mintFee = _mintFee;
+        maxMintAmount = _maxMintAmount;
+        maxSupply = _maxSupply;
+        startSale = _startSale;
     }
 
     /**
      * @dev Mints `_mintAmount` tokens to the caller of the function.
      * The caller has to send `_mintFee`*`_mintAmount` ethers and the sale should be open to mint.
-     * The `_mintAmount` has to be greater than 0 and less than or equal to `s_maxMintAmount`.
+     * The `_mintAmount` has to be greater than 0 and less than or equal to `maxMintAmount`.
      * @param _mintAmount The number of tokens to mint.
      */
     function mintNft(uint256 _mintAmount) public payable {
-        if (_mintAmount <= 0 || _mintAmount > s_maxMintAmount) {
+        if (_mintAmount <= 0 || _mintAmount > maxMintAmount) {
             revert UniforgeCollection__InvalidMintAmount();
         }
-        if (block.timestamp < s_startSale) {
+        if (block.timestamp < startSale) {
             revert UniforgeCollection__SaleIsNotOpen();
         }
-        if (msg.value < i_mintFee * _mintAmount) {
+        if (msg.value < mintFee * _mintAmount) {
             revert UniforgeCollection__NeedMoreETHSent();
         }
         _mintLoop(msg.sender, _mintAmount);
     }
 
     /**
-     * @dev Allows the contract owner to mint tokens without constraints for marketing / strategy purposes.
+     * @dev Allows the contract owner to mint tokens without constraints.
      * @param _mintAmount The number of tokens to mint.
      * @param _receiver The address to receive the minted tokens.
      */
-    function mintForAddress(uint256 _mintAmount, address _receiver) public payable onlyOwner {
+    function mintForAddress(
+        uint256 _mintAmount,
+        address _receiver
+    ) public payable onlyOwner {
         _mintLoop(_receiver, _mintAmount);
     }
 
@@ -96,7 +99,15 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @param _baseURI The new base URI.
      */
     function setBaseURI(string memory _baseURI) public onlyOwner {
-        s_baseURI = _baseURI;
+        baseURI = _baseURI;
+    }
+
+    /**
+     * @dev Sets the cost of minting a single token in the public sale.
+     * @param _mintFee The cost of minting a single token.
+     */
+    function setMintFee(uint256 _mintFee) public onlyOwner {
+        mintFee = _mintFee;
     }
 
     /**
@@ -104,7 +115,15 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @param _maxMintAmount The new maximum number of tokens.
      */
     function setMaxMintAmountPerTx(uint256 _maxMintAmount) public onlyOwner {
-        s_maxMintAmount = _maxMintAmount;
+        maxMintAmount = _maxMintAmount;
+    }
+
+    /**
+     * @dev Sets the upper limit on the total number of tokens that can be created.
+     * @param _maxSupply The maximum total number of tokens that can be minted.
+     */
+    function setMaxSupply(uint256 _maxSupply) public onlyOwner {
+        maxSupply = _maxSupply;
     }
 
     /**
@@ -112,14 +131,16 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @param _startSale The new starting timestamp.
      */
     function setStartSale(uint256 _startSale) public onlyOwner {
-        s_startSale = _startSale;
+        startSale = _startSale;
     }
 
     /**
      * @dev Allows the contract owner to withdraw the Ether balance of the contract.
      */
     function withdraw() public onlyOwner {
-        (bool _ownerSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        (bool _ownerSuccess, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
         if (!_ownerSuccess) {
             revert UniforgeCollection__TransferFailed();
         }
@@ -133,60 +154,62 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      */
     function _mintLoop(address _receiver, uint256 _mintAmount) internal {
         for (uint256 i = 0; i < _mintAmount; i++) {
-            s_supply.increment();
+            supply.increment();
 
-            if (s_supply.current() > i_maxSupply) {
+            if (supply.current() > maxSupply) {
                 revert UniforgeCollection__MaxSupplyExceeded();
             }
 
-            _safeMint(_receiver, s_supply.current());
+            _safeMint(_receiver, supply.current());
         }
     }
 
     /**
      * @dev Returns the maximum total number of tokens that can be minted.
      */
-    function maxSupply() public view returns (uint256) {
-        return i_maxSupply;
+    function getMaxSupply() public view returns (uint256) {
+        return maxSupply;
     }
 
     /**
      * @dev Returns the cost of minting a single token.
      */
-    function mintFee() public view returns (uint256) {
-        return i_mintFee;
+    function getMintFee() public view returns (uint256) {
+        return mintFee;
     }
 
     /**
      * @dev Returns the maximum number of tokens that can be minted in a single transaction.
      */
-    function maxMintAmount() public view returns (uint256) {
-        return s_maxMintAmount;
+    function getMaxMintAmount() public view returns (uint256) {
+        return maxMintAmount;
     }
 
     /**
      * @dev Returns the current sale starting timestamp.
      */
-    function startSale() public view returns (uint256) {
-        return s_startSale;
+    function getStartSale() public view returns (uint256) {
+        return startSale;
     }
 
     /**
      * @dev Returns the base URI of the ERC721 token metadata.
      */
-    function baseURI() public view returns (string memory) {
-        return s_baseURI;
+    function getBaseURI() public view returns (string memory) {
+        return baseURI;
     }
 
     /**
      * @dev Returns the specific URI for a given token.
      * @param _tokenId The ID of the token to retrieve the URI for.
-     * @notice The returned URI is the concatenation of the base URI and the token ID in string format.
+     * @notice The returned URI is the concatenation of the base URI and the token ID strings.
      */
-    function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
-        if (_tokenId <= 0 || _tokenId > s_supply.current()) {
+    function tokenURI(
+        uint256 _tokenId
+    ) public view virtual override returns (string memory) {
+        if (_tokenId <= 0 || _tokenId > supply.current()) {
             revert UniforgeCollection__NonexistentToken();
         }
-        return string(abi.encodePacked(s_baseURI, _tokenId.toString()));
+        return string(abi.encodePacked(baseURI, _tokenId.toString()));
     }
 }
