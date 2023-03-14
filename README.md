@@ -16,7 +16,8 @@ With Uniforge, users can create, manage, showcase, and mint their unique digital
 
 -   **Storage service**: The price for the storage service is a periodic payment on a monthly or yearly basis to cover the expenses of keeping the files pinned on IPFS. Besides offering this service we always encourage users to pin their own collections on IPFS to increase descentralization.
 
-Beside the above services, Uniforge does not collect any other financial resource from your actions in the platform and **you keep 100% of your NFT sale profits**, also **you appear on chain as the deployer** and you (or the chosen owner) of the collection has **total ownership of the smartcontract** of your own collection and you can interact with it freely on the "Manage" section from our app or externally on etherscan or your own frontend.
+Beside the above services, Uniforge does not collect any other financial resource from your actions in the platform and **you keep 100% of your NFT sale profits**.
+Also **you appear on chain as the deployer** and you, or the chosen owner of the collection, has **total ownership of the smartcontract** of your NFT collection which you (or the chosen owner) can interact with freely on the Uniforge app or another external frontend.
 
 ## About
 At Dapponics, we believe in the power of decentralization and importance of protecting users privacy and security and their rights to fully own the assets. That's why we've designed our platform to be fully decentralized, with no central authority controlling the platform.
