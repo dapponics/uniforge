@@ -21,7 +21,7 @@ Beside the above services, Uniforge does not collect any other financial resourc
 ## About
 At Dapponics, we believe in the power of decentralization and importance of protecting users privacy and security and their rights to fully own the assets. That's why we've designed our platform to be fully decentralized, with no central authority controlling the platform.
 
-Feel free to take a look of the smart contracts we implemented in the Uniforge application in this repository to verify by yourself there is nothing hidden or obscure on them.
+Feel free to take a look and verify the Uniforge smart contracts here in this repository.
 
 ## Contact Us
 If you have any questions, feedback, or suggestions, please do not hesitate to [contact us](https://dapponics.io/). We would love to hear from you!
