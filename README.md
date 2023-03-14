@@ -1,6 +1,6 @@
 # Welcome to Uniforge
 
-Uniforge is a decentralized platform created by Dapponics, that allows artists, creators and entrepreneurs to deploy and manage their own NFT collections without requiring any technical knowledge or expertise and enables others to mint NFTs in the platform. 
+Uniforge is a decentralized platform developed by Dapponics, that allows artists, creators and entrepreneurs to deploy and manage their own NFT collections without requiring any technical knowledge or expertise and enables others to mint NFTs in the platform. 
 
 With Uniforge, users can create, manage, showcase, and mint their unique digital assets without any intermediaries, making it fully decentralized.
 
