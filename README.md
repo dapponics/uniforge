@@ -6,8 +6,8 @@ With Uniforge, users can create, manage, showcase, and mint their unique digital
 
 ## Features
 -   **Collection Deployment**: Easily deploy your own unique NFT collection and customize its properties, such as name, symbol, mint price, total supply and starting date of the public sale.
--   **Collection Manager**: Safely manage your deployed NFT collection, editing properties such as mint price, modifying the ownership or withdrawing the funds from the sale.
--   **Minting**: Allow others to mint their own NFTs from your collection, which they can use to represent their unique digital asset or a share from your project.
+-   **Collection Management**: Safely manage your deployed NFT collection, editing properties such as mint price, modifying the ownership or withdrawing the funds from the sale.
+-   **Minting**: Allow others to mint their own NFTs from your collection, which they can use to represent their unique asset or share from your project.
 -   **IPFS Storage**: Additionally we offer a Storage Service to store your NFT files such as images and metadata securely and in a decentralized manner on the InterPlanetary File System (IPFS).
 -   **Fully Decentralized**: Uniforge is built on blockchain technology, meaning that it is decentralized, secure, and transparent.
 
@@ -16,7 +16,7 @@ With Uniforge, users can create, manage, showcase, and mint their unique digital
 
 -   **Storage service**: The price for the storage service is a periodic payment on a monthly or yearly basis to cover the expenses of keeping the files pinned on IPFS. Even though we offer this service, we always encourage users to pin their own collections on IPFS to increase decentralization.
 
-Besides the above-mentioned services, Uniforge does not collect any other financial resources from your actions on the platform, and you keep 100% of your NFT sale profits. Additionally, you appear on-chain as the deployer of the NFT collection's smart contract, and this contract is entirely owned by you (or the address you chose to become the owner). You are able to interact with your smart contract freely through the Uniforge app or externally with a different frontend.
+Besides the above-mentioned services, Uniforge does not collect any other financial resources from your actions on the platform, and you keep 100% of your NFT sale profits. Additionally, you appear on-chain as the deployer of the NFT collection's smart contract, and this contract is entirely owned by you (or the address you choose to become the owner). You are able to interact with your smart contract freely through the Uniforge app or externally with a different frontend.
 
 ## About
 At Dapponics, we believe in the power of decentralization. We also believe in the importance of protecting users' privacy and security and preserving their rights to fully own their assets. That's why we've designed our platform to be fully decentralized, with no central authority controlling the platform.
