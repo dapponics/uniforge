@@ -27,10 +27,10 @@ contract UniforgeDeployerV1 is Ownable {
     event NewCollectionCreated(address indexed newUniforgeCollection);
 
     /**
-     * @dev The contract transfers ownership when is created.
+     * @dev The contract owner is set to the deployer when the contract is created.
      */
-    constructor(address _owner) {
-        transferOwnership(_owner);
+    constructor() {
+        transferOwnership(msg.sender);
     }
 
     /**
