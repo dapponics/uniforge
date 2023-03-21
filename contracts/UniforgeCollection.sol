@@ -158,13 +158,13 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      */
     function _mintLoop(uint256 _mintAmount, address _receiver) internal {
         for (uint256 i = 0; i < _mintAmount; i++) {
-            supply.increment();
-
-            if (supply.current() > maxSupply) {
+            if (supply.current() >= maxSupply) {
                 revert UniforgeCollection__MaxSupplyExceeded();
             }
 
             _safeMint(_receiver, supply.current());
+
+            supply.increment();
         }
     }
 
