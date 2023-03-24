@@ -35,10 +35,22 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
     uint256 private maxSupply;
     uint256 private startSale;
 
-    event MintFeeUpdated(address indexed collectionAddress, uint256 indexed newMintFee);
-    event MaxMintAmountUpdated(address indexed collectionAddress, uint256 indexed newMaxMintAmount);
-    event MaxSupplyUpdated(address indexed collectionAddress, uint256 indexed newMaxSupply);
-    event StartSaleUpdated(address indexed collectionAddress, uint256 indexed newStartSale);
+    event MintFeeUpdated(
+        address indexed collectionAddress,
+        uint256 indexed newMintFee
+    );
+    event MaxMintAmountUpdated(
+        address indexed collectionAddress,
+        uint256 indexed newMaxMintAmount
+    );
+    event MaxSupplyUpdated(
+        address indexed collectionAddress,
+        uint256 indexed newMaxSupply
+    );
+    event StartSaleUpdated(
+        address indexed collectionAddress,
+        uint256 indexed newStartSale
+    );
 
     /**
      * @dev Transfers ownership to the client right at deployment and declare all the variables.
@@ -93,7 +105,10 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @param _mintAmount The number of tokens to mint.
      * @param _receiver The address to receive the minted tokens.
      */
-    function mintForAddress(uint256 _mintAmount, address _receiver) public payable onlyOwner {
+    function mintForAddress(
+        uint256 _mintAmount,
+        address _receiver
+    ) public payable onlyOwner {
         _mintLoop(_mintAmount, _receiver);
     }
 
@@ -145,7 +160,9 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @dev Allows the contract owner to withdraw the Ether balance of the contract.
      */
     function withdraw() public onlyOwner {
-        (bool _ownerSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        (bool _ownerSuccess, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
         if (!_ownerSuccess) {
             revert UniforgeCollection__TransferFailed();
         }
@@ -204,11 +221,13 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
     }
 
     /**
-     * @dev Returns the specific URI for a given token.
+     * @dev Retur the specific URI for a given token.
      * @param _tokenId The ID of the token to retrieve the URI for.
      * @notice The returned URI is the concatenation of the base URI and the token ID strings.
      */
-    function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
+    function tokenURI(
+        uint256 _tokenId
+    ) public view virtual override returns (string memory) {
         if (_tokenId >= supply.current()) {
             revert UniforgeCollection__NonexistentToken();
         }
