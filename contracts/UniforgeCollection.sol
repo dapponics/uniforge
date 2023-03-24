@@ -209,7 +209,7 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @notice The returned URI is the concatenation of the base URI and the token ID strings.
      */
     function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
-        if (_tokenId <= 0 || _tokenId > supply.current()) {
+        if (_tokenId >= supply.current()) {
             revert UniforgeCollection__NonexistentToken();
         }
         return string(abi.encodePacked(baseURI, _tokenId.toString()));
