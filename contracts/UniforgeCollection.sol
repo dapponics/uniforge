@@ -221,7 +221,7 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
     }
 
     /**
-     * @dev Retur the specific URI for a given token.
+     * @dev Returns the specific URI for a given token.
      * @param _tokenId The ID of the token to retrieve the URI for.
      * @notice The returned URI is the concatenation of the base URI and the token ID strings.
      */
