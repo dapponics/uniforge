@@ -1,8 +1,8 @@
 # Welcome to Uniforge
 
-[Uniforge](https://uniforge.io/) is a decentralized platform developed by Dapponics, that allows artists, creators and entrepreneurs to deploy and manage their own NFT collections without requiring any technical knowledge or expertise.  It also enables others to mint the NFTs from the collections within the platform.
+[Uniforge](https://uniforge.io/) is a decentralized permissionless multichain platform developed by Dapponics, that allows creators to easily create, deploy, manage, showcase and sell their own fully customizable NFT collections, and collectors to explore the creators' collections and mint the NFTs in a safe and secure way.
 
-With Uniforge, users can create, manage, showcase, and mint their unique digital assets without any intermediaries, making it fully decentralized.
+With Uniforge, users can create and collect unique digital assets without any intermediaries, making it fully decentralized.
 
 ## Features
 -   **Collection Deployment**: Easily deploy your own unique NFT collection and customize its properties, such as name, symbol, mint price, total supply and starting date of the public sale.
