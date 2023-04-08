@@ -1,17 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.16;
-/**            _ ____                    
-  __  ______  (_) __/___  _________ ____ 
- / / / / __ \/ / /_/ __ \/ ___/ __ `/ _ \
-/ /_/ / / / / / __/ /_/ / /  / /_/ /  __/
-\__,_/_/ /_/_/_/  \____/_/   \__, /\___/ 
-                            /____/  
-*/
+pragma solidity ^0.8.17;
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./UniforgeCollection.sol";
 
 error UniforgeDeployerV1__NeedMoreETHSent();
 error UniforgeDeployerV1__TransferFailed();
+error UniforgeDeployerV1__InvalidDiscount();
 
 /**
  * @title Uniforge Deployer V1
@@ -24,16 +19,19 @@ contract UniforgeDeployerV1 is Ownable {
     uint256 private deployFee;
     uint256 private deployedCollectionsCounter;
     mapping(uint256 => address) private deployedCollections;
+    mapping(address => uint256) private deployerDiscounts;
 
     event NewCollectionCreated(address indexed newUniforgeCollection);
     event DeployFeeUpdated(uint256 indexed newDeployFee);
+    event DiscountedDeployer(address indexed customer, uint256 indexed discount);
 
     /**
      * @dev Transfers ownership to a new owner at the contract creation.
      * @param _owner The address of the new owner of the UniforgeDeployerV1 contract.
      */
-    constructor(address _owner) {
+    constructor(address _owner, uint256 _deployFee) {
         transferOwnership(_owner);
+        deployFee = _deployFee;
     }
 
     /**
@@ -45,7 +43,7 @@ contract UniforgeDeployerV1 is Ownable {
      * @param _mintFee The cost of minting a single token.
      * @param _maxMintAmount The maximum number of tokens that can be minted in a single transaction.
      * @param _maxSupply The maximum total number of tokens that can be minted.
-     * @param _startSale The timestamp representing the start time of the public sale.
+     * @param _saleStart The timestamp representing the start time of the public sale.
      */
     function deployUniforgeCollection(
         address _owner,
@@ -55,9 +53,11 @@ contract UniforgeDeployerV1 is Ownable {
         uint256 _mintFee,
         uint256 _maxMintAmount,
         uint256 _maxSupply,
-        uint256 _startSale
+        uint256 _saleStart
     ) public payable {
-        if (msg.value < deployFee) {
+        uint256 discountPercentage = 100 - deployerDiscounts[msg.sender];
+        uint256 finalPrice = (deployFee * discountPercentage) / 100;
+        if (msg.value < finalPrice) {
             revert UniforgeDeployerV1__NeedMoreETHSent();
         }
         address newUniforgeCollection = address(
@@ -69,12 +69,14 @@ contract UniforgeDeployerV1 is Ownable {
                 _mintFee,
                 _maxMintAmount,
                 _maxSupply,
-                _startSale
+                _saleStart
             )
         );
 
+        deployedCollections[deployedCollectionsCounter] = address(
+            newUniforgeCollection
+        );
         deployedCollectionsCounter += 1;
-        deployedCollections[deployedCollectionsCounter] = address(newUniforgeCollection);
         emit NewCollectionCreated(address(newUniforgeCollection));
     }
 
@@ -88,10 +90,28 @@ contract UniforgeDeployerV1 is Ownable {
     }
 
     /**
+     * @dev Allows the contract owner to provide a discount to a specific customer.
+     * @param _customer The address of the customer who gets the discount.
+     * @param _discountPercentage The discount provided as a percentage.
+     */
+    function setDeployerDiscount(
+        address _customer,
+        uint256 _discountPercentage
+    ) public onlyOwner {
+        if (_discountPercentage > 99) {
+            revert UniforgeDeployerV1__InvalidDiscount();
+        }
+        deployerDiscounts[_customer] = _discountPercentage;
+        emit DiscountedDeployer(_customer, _discountPercentage);
+    }
+
+    /**
      * @dev Allows the contract owner to withdraw the Ether balance of the contract.
      */
     function withdraw() public onlyOwner {
-        (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
+        (bool success, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
         if (!success) {
             revert UniforgeDeployerV1__TransferFailed();
         }
@@ -106,10 +126,10 @@ contract UniforgeDeployerV1 is Ownable {
 
     /**
      * @dev Returns the address of a specific deployed Uniforge Collection.
-     * @param index The index of the deployed collection.
+     * @param _index The index of the deployed collection.
      */
-    function getDeployment(uint256 index) public view returns (address) {
-        return deployedCollections[index];
+    function getDeployment(uint256 _index) public view returns (address) {
+        return deployedCollections[_index];
     }
 
     /**
@@ -117,5 +137,26 @@ contract UniforgeDeployerV1 is Ownable {
      */
     function getDeployFee() public view returns (uint256) {
         return deployFee;
+    }
+
+    /**
+     * @dev Returns the discount percentage for a specific customer.
+     * @param _customer The address of the customer.
+     */
+    function getDiscountForAddress(
+        address _customer
+    ) public view returns (uint256) {
+        return deployerDiscounts[_customer];
+    }
+
+    /**
+     * @dev Returns the final price required to deploy a new Uniforge Collection.
+     * @param _customer The address of the customer.
+     */
+    function getFinalPriceForAddress(
+        address _customer
+    ) public view returns (uint256) {
+        uint256 discountPercentage = 100 - deployerDiscounts[_customer];
+        return (deployFee * discountPercentage) / 100;
     }
 }

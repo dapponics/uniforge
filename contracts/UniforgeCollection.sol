@@ -1,12 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.16;
-/**            _ ____                    
-  __  ______  (_) __/___  _________ ____ 
- / / / / __ \/ / /_/ __ \/ ___/ __ `/ _ \
-/ /_/ / / / / / __/ /_/ / /  / /_/ /  __/
-\__,_/_/ /_/_/_/  \____/_/   \__, /\___/ 
-                            /____/  
-*/
+pragma solidity ^0.8.17;
+
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -33,24 +27,12 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
     uint256 private mintFee;
     uint256 private maxMintAmount;
     uint256 private maxSupply;
-    uint256 private startSale;
+    uint256 private saleStart;
 
-    event MintFeeUpdated(
-        address indexed collectionAddress,
-        uint256 indexed newMintFee
-    );
-    event MaxMintAmountUpdated(
-        address indexed collectionAddress,
-        uint256 indexed newMaxMintAmount
-    );
-    event MaxSupplyUpdated(
-        address indexed collectionAddress,
-        uint256 indexed newMaxSupply
-    );
-    event StartSaleUpdated(
-        address indexed collectionAddress,
-        uint256 indexed newStartSale
-    );
+    event MintFeeUpdated(address indexed collectionAddress, uint256 indexed newMintFee);
+    event MaxMintAmountUpdated(address indexed collectionAddress, uint256 indexed newMaxMintAmount);
+    event MaxSupplyUpdated(address indexed collectionAddress, uint256 indexed newMaxSupply);
+    event SaleStartUpdated(address indexed collectionAddress, uint256 indexed newSaleStart);
 
     /**
      * @dev Transfers ownership to the client right at deployment and declare all the variables.
@@ -61,7 +43,7 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
      * @param _mintFee The cost of minting a single token.
      * @param _maxMintAmount The maximum number of tokens that can be minted in a single transaction.
      * @param _maxSupply The maximum total number of tokens that can be minted.
-     * @param _startSale The timestamp representing the start time of the public sale.
+     * @param _saleStart The timestamp representing the start time of the public sale.
      */
     constructor(
         address _owner,
@@ -71,14 +53,14 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
         uint256 _mintFee,
         uint256 _maxMintAmount,
         uint256 _maxSupply,
-        uint256 _startSale
+        uint256 _saleStart
     ) ERC721(_name, _symbol) {
         transferOwnership(_owner);
         baseURI = _baseURI;
         mintFee = _mintFee;
         maxMintAmount = _maxMintAmount;
         maxSupply = _maxSupply;
-        startSale = _startSale;
+        saleStart = _saleStart;
     }
 
     /**
@@ -91,25 +73,25 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
         if (_mintAmount <= 0 || _mintAmount > maxMintAmount) {
             revert UniforgeCollection__InvalidMintAmount();
         }
-        if (block.timestamp < startSale) {
+        if (block.timestamp < saleStart) {
             revert UniforgeCollection__SaleIsNotOpen();
         }
         if (msg.value < mintFee * _mintAmount) {
             revert UniforgeCollection__NeedMoreETHSent();
         }
-        _mintLoop(_mintAmount, msg.sender);
+        _mintLoop(msg.sender, _mintAmount);
     }
 
     /**
      * @dev Allows the contract owner to mint free tokens without time or mint limit constraints.
-     * @param _mintAmount The number of tokens to mint.
      * @param _receiver The address to receive the minted tokens.
+     * @param _mintAmount The number of tokens to mint.
      */
-    function mintForAddress(
-        uint256 _mintAmount,
-        address _receiver
-    ) public payable onlyOwner {
-        _mintLoop(_mintAmount, _receiver);
+    function freeMintForAddress(
+        address _receiver,
+        uint256 _mintAmount
+    ) public onlyOwner {
+        _mintLoop(_receiver, _mintAmount);
     }
 
     /**
@@ -149,11 +131,11 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
 
     /**
      * @dev Sets the starting timestamp of the public sale.
-     * @param _startSale The new starting timestamp.
+     * @param _saleStart The new starting timestamp.
      */
-    function setStartSale(uint256 _startSale) public onlyOwner {
-        startSale = _startSale;
-        emit StartSaleUpdated(address(this), startSale);
+    function setSaleStart(uint256 _saleStart) public onlyOwner {
+        saleStart = _saleStart;
+        emit SaleStartUpdated(address(this), saleStart);
     }
 
     /**
@@ -170,10 +152,10 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
 
     /**
      * @dev Helper function for minting `_mintAmount` tokens to `_receiver`.
-     * @param _mintAmount The number of tokens to mint.
      * @param _receiver The address to receive the minted tokens.
+     * @param _mintAmount The number of tokens to mint.
      */
-    function _mintLoop(uint256 _mintAmount, address _receiver) internal {
+    function _mintLoop(address _receiver, uint256 _mintAmount) internal {
         for (uint256 i = 0; i < _mintAmount; i++) {
             if (supply.current() >= maxSupply) {
                 revert UniforgeCollection__MaxSupplyExceeded();
@@ -209,8 +191,8 @@ contract UniforgeCollection is ERC721Enumerable, Ownable {
     /**
      * @dev Returns the starting timestamp of the public sale.
      */
-    function getStartSale() public view returns (uint256) {
-        return startSale;
+    function getSaleStart() public view returns (uint256) {
+        return saleStart;
     }
 
     /**
