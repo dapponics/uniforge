@@ -1,35 +1,35 @@
-# Uniforge, Why It Matters
+# Uniforge: Empowering Creators to Mint NFTs Without Compromising Decentralization
 
-Simplicity is at the core of what we do. Uniforge is set to become the standard for deployin and minting NFTs.
+The NFT market has been booming recently, but with this growth comes an increasing trend towards centralization. Some platforms are implementing measures that restrict creators' control over their own creations, endangering the very decentralization that blockchain technology was built to enable.
 
-Uniforge is revolutionary in that it closes the gap between the creators looking for someone to code their NFT collection smartcontract, and the possibilities that blockchain enables to them.
+At Uniforge, we believe that simplicity and decentralization are at the core of what we do. Our platform empowers creators to deploy and mint NFTs without compromising on security or control.
 
-## We heard you, some of us were in your situation before.
+## The Problem: Barriers to Entry for Creators
 
-It takes time and effort to learn how to develop your smartcontracts in a secure way or find a developer you can trust and agree with your vision and objectives.
-It is tiresome to find platforms with long funnels that ask you to provide personal information and credit card data with no guarantees.
-Is not in the ethos of descentralization to create your collection in thirdparties' smartcontracts as your collection will be forever embedded in other's collection.
-It is confusing to deploy a collection where the code is hard to understand and you dont know what you are buying.
+Creating an NFT collection can be a daunting task, especially for creators who lack coding experience. Finding a trusted developer to write a secure smart contract is time-consuming, and some platforms require personal information and credit card data without any guarantees.
 
-Adittionally, as veterans in this industry, we feel the responsability to improve the security in the space. Protecting the next waves of web3 users from vulnerable exploitable smartcontracts or phising mints. A standard guardrails for embarking new users, creators and collectors is very much needed.
+Additionally, many existing platforms require creators to create their collections within third-party smart contracts, which compromises decentralization and can lead to confusion and security risks.
 
-## The solution.
+Finally, as veterans in the industry, we feel a responsibility to improve the security of the space and protect new users from vulnerable, exploitable smart contracts or phishing attempts. A standard guardrail for new users, creators, and collectors is sorely needed.
 
-Uniforge was created to fix all these issues and make the web3 users life better. All our focus is directed in the deployment and mint process, providing creators a powerful tool to quickly materialize their vision. After that, creators and communities can make use of their assets in the way they please, whether it is governance tools such as Snapshot, secondary marketplaces such as Opensea, skating protocols and much more.
+## The Solution: Uniforge
 
-## How does it work?
+Uniforge was created to address these issues and make the lives of web3 users better. Our platform is focused on simplifying the deployment and minting process, providing creators with a powerful tool to quickly materialize their vision.
 
-To do that,
-Creating
+Using Uniforge, creators can craft and deploy their own fully customizable smart contracts without any coding experience. All NFTs minted on our platform are created by verified smart contracts, ensuring that there is no space for malicious code interacting with your wallets.
 
-(value proposal)
+Our platform is also multichain and gas-efficient, providing creators with a flexible and cost-effective way to deploy their NFT collections.
 
-(conclusion)
-It is a no-coding, permissionless, multichain, gas-efficient platform
-Uniforge allow creators to craft and deploy their own fully customizable smartcontract with no-coding. only create collection's in 3rd parties smartcontracts. They actually become the deployers and the crafters of their own smart contract.
+## Protecting Decentralization
 
-We launch offering the standard implementation of the NFT standard ERC721, most probably we will expand in the future offering mre flexibility to creators.
+As the NFT market continues to grow, we are seeing an increasing trend towards centralization. Some platforms are implementing measures that restrict creators' control over their own creations, which threatens the decentralization that blockchain technology enables.
 
-## Solving the builder's trilema
+The new trend seems to be to move NFTs as far towards centralization as they can get away with. Operators are filtering transactions to strong-arm royalties, cosigners are being added to stop mint bots, and dangerously upgradeable proxies are being used to alter logic at will.
 
-In any project one needs to choose two among speed, quality and cost. We want to converge the three of them into a single high quality product where you can benefit instantly with a reasonable price.
+At Uniforge, we believe that true decentralization is essential to the success of the NFT space. Our platform is designed to empower creators to take control of their NFT collections and ensure that they remain decentralized.
+
+## Conclusion: Empowering Creators with Decentralization
+
+In a world where some platforms are compromising decentralization in the pursuit of profit, Uniforge stands out as a platform that empowers creators to take control of their NFT collections.
+
+Our focus on simplicity and decentralization ensures that creators can easily deploy and mint their own NFTs without compromising on security or control. We believe that our platform will become the standard for deploying and minting NFTs, setting a new quality standard for the industry.
