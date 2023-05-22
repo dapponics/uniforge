@@ -10,7 +10,7 @@ error UniforgeStorage__InsufficientEth();
 
 /**
  * @title Uniforge Storage
- * @author d-carranza
+ * @author Dapponics
  * @notice This contract verify Storage Payments in Uniforge
  * @notice emiting events that confirm the transactions.
  * @notice For more info about Uniforge, visit uniforge.io.

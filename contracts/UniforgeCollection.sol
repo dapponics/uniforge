@@ -24,8 +24,8 @@ contract UniforgeCollection is Ownable, ERC721A, ERC2981, OperatorFilterer{
     uint96 private _royaltyPercentage;
     bool private _royaltyEnforced;
 
+    event BaseURIUpdated(string baseURI);
     event RoyaltyEnforced(bool indexed enforced);
-    event BaseURIUpdated(string indexed baseURI);
     event MintFeeUpdated(uint256 indexed mintFee);
     event SaleStartUpdated(uint256 indexed saleStart);
     event RoyaltyUpdated(address indexed royaltyReceiver, uint96 indexed royaltyPercentage);
@@ -44,6 +44,7 @@ contract UniforgeCollection is Ownable, ERC721A, ERC2981, OperatorFilterer{
      * @param mintLimit_ The maximum number of tokens that can be minted at once.
      * @param maxSupply_ The maximum total number of tokens that can be minted.
      * @param saleStart_ The timestamp representing the start time of the public sale.
+     * @param royaltyReceiver_ The address of the new royalty receiver of the contract.
      * @param royaltyPercentage_ The percentage of the royalty for the ERC2981 standard.
      * @param royaltyEnforced_ The boolean that enables or disables the Operator Filter.
      */
@@ -56,6 +57,7 @@ contract UniforgeCollection is Ownable, ERC721A, ERC2981, OperatorFilterer{
         uint256 mintLimit_,
         uint256 maxSupply_,
         uint256 saleStart_,
+        address royaltyReceiver_,
         uint96 royaltyPercentage_,
         bool royaltyEnforced_
     ) ERC721A (name_, symbol_) OperatorFilterer(
@@ -68,10 +70,10 @@ contract UniforgeCollection is Ownable, ERC721A, ERC2981, OperatorFilterer{
         _mintLimit = mintLimit_;
         _maxSupply = maxSupply_;
         _saleStart = saleStart_;
-        _royaltyReceiver = owner_;
+        _royaltyReceiver = royaltyReceiver_;
         _royaltyPercentage = royaltyPercentage_;
         _royaltyEnforced = royaltyEnforced_;
-        _setDefaultRoyalty(owner_, royaltyPercentage_);
+        _setDefaultRoyalty(royaltyReceiver_, royaltyPercentage_);
     }
 
     // =============================================================

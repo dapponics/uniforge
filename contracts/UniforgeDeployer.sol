@@ -49,6 +49,7 @@ contract UniforgeDeployer is Ownable {
      * @param mintLimit The maximum number of tokens that can be minted at once.
      * @param maxSupply The maximum total number of tokens that can be minted.
      * @param saleStart The timestamp representing the start time of the public sale.
+     * @param royaltyReceiver The address of the new royalty receiver of the contract.
      * @param royaltyPercentage The percentage of the royalty for the ERC2981 standard.
      * @param royaltyEnforced The boolean that enables or disables the Operator Filter.
      */
@@ -61,6 +62,7 @@ contract UniforgeDeployer is Ownable {
         uint256 mintLimit,
         uint256 maxSupply,
         uint256 saleStart,
+        address royaltyReceiver,
         uint96 royaltyPercentage,
         bool royaltyEnforced
     ) external payable {
@@ -81,6 +83,7 @@ contract UniforgeDeployer is Ownable {
                     mintLimit,
                     maxSupply,
                     saleStart,
+                    royaltyReceiver,
                     royaltyPercentage,
                     royaltyEnforced
                 )
